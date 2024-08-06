@@ -1,13 +1,21 @@
 /**
+ * <p>
  * This class produces a CLI program that converts every letter in a text file to
  * either lower- or uppercase, while giving the option to move or not to move
  * the resulting file to a different directory. 
  *  
  * The user must enter as a command line argument the name of the text file they
  * want to convert to all lower- or uppercase, or the program will stop.
+ * </p>
  * 
+ * <p>
+ * <pre>
+ * javac FileProcessor.java
+ * java FileProcessor demo.txt
+ * </pre>
+ * </p>
  * @author Charles Doan
- * Date: 5 August 2024
+ * ate: 5 August 2024
  */
 import java.io.*;
 import java.nio.file.*;
@@ -58,7 +66,7 @@ public class FileProcessor {
      * @return true if the user wants to move the file to a different directory;
      *      false otherwise.
      */
-    private static boolean promptForMove() {
+    public static boolean promptForMove() {
         String answer;
         boolean decision = false;
         boolean done = false;
@@ -82,7 +90,7 @@ public class FileProcessor {
      * @return true if the user wants the characters to be uppercase;
      *      false if they want it lowercase.
      */
-    private static boolean isUpper() {
+    public static boolean isUpper() {
         String answer;
         boolean decision = false;
         boolean done = false;
@@ -107,7 +115,7 @@ public class FileProcessor {
      *      file should be moved.
      * @return a Path to where the file is located or should be moved.
      */
-    private static Path getPath(String message) {
+    public static Path getPath(String message) {
         Path path = null;
         String pathString = null;
         boolean gotPath = false;
@@ -130,7 +138,7 @@ public class FileProcessor {
      * @param path the path in question as a String
      * @return whether or not the path is valid
      */
-    private static boolean isValidPath(String path) {
+    public static boolean isValidPath(String path) {
         Path testPath = null;
         try {
             testPath = Paths.get(path).toAbsolutePath();
@@ -153,7 +161,7 @@ public class FileProcessor {
      * @param fileName the name of the file
      * @param lines the ArrayList each line in the file will be stored in
      */
-    private static void readFile(String fileName, ArrayList<String> lines) {
+    public static void readFile(String fileName, ArrayList<String> lines) {
         try (FileReader initReader = new FileReader(fileName);
              BufferedReader reader = new BufferedReader(initReader)) {
             String line;
@@ -173,7 +181,7 @@ public class FileProcessor {
      * @param func the lambda expression that either makes each letter
      *      lower- or uppercase
      */
-    private static void writeToFile(String fileName,
+    public static void writeToFile(String fileName,
          ArrayList<String> lines, CaseFunction func) {
         try (FileWriter initWriter = new FileWriter(fileName);
              BufferedWriter writer = new BufferedWriter(initWriter)) {
